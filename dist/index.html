@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>21</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數字猜測遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>猜一個 1 到 100 的數字</h1>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">提交猜測</button>
+    <div id="result"></div>
+    <button onclick="resetGame()">重置遊戲</button>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById('guess').value;
+            attempts++;
+            let resultMessage;
+
+            if (userGuess < randomNumber) {
+                resultMessage = "太低了！再試一次。";
+            } else if (userGuess > randomNumber) {
+                resultMessage = "太高了！再試一次。";
+            } else {
+                resultMessage = `恭喜你，答對了！你總共猜了 ${attempts} 次。`;
+            }
+
+            document.getElementById('result').innerText = resultMessage;
+        }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            document.getElementById('result').innerText = '';
+            document.getElementById('guess').value = '';
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
